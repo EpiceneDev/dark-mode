@@ -2,16 +2,16 @@ import { useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage.js';
 
 export const useDarkMode = () => {
-    const [darkMode, setDarkMode] = useLocalStorage("darkModeKey", false)
+    const [darkFlag, setDarkFlag] = useLocalStorage(1, false);
 
     useEffect(() => {
         
-        if(useLocalStorage.getItem("darkModeKey") == true) {
-                document.querySelector('body').classList.add('dark-mode')
+        if(darkFlag === true) {
+            document.querySelector('body').classList.add('dark-mode');
         } else {
-            document.querySelector('body').classList.remove('dark-mode')
+            document.querySelector('body').classList.remove('dark-mode');
         };
-    }, [darkMode]);
+    }, [darkFlag]);
 
-    return [darkMode, setDarkMode];
+    return [darkFlag, setDarkFlag];
 }
